@@ -1,33 +1,35 @@
 ---
-  import clsx from 'clsx';
-interface Props  {
+import type { HTMLAttributes } from 'astro/types';
+import clsx from 'clsx';
+
+interface Props extends HTMLAttributes<'button'> {
   variant?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'outline';
   size?: 'small' | 'medium' | 'large';
 }
 
-const {variant = "accent", size = "medium", ...rest} = Astro.props
+const { variant = 'accent', size = 'medium', ...rest } = Astro.props;
 ---
 
-      <button
-      class={clsx(
-        'rounded-sm text-center border border-transparent disabled:cursor-not-allowed disabled:opacity-60',
-        {
-          ['bg-primary-900 text-gray-100 focus:border-primary-700 focus-within:border-primary-700 hover:bg-primary-800']:
-            variant === 'primary',
-          ['bg-secondary-600 text-gray-100 focus:border-secondary-500 focus-within:border-secondary-500 hover:bg-secondary-500']:
-            variant === 'secondary',
-          ['bg-accent-700 text-gray-100 focus:border-accent-500 focus-within:border-accent-500 hover:bg-accent-600']:
-            variant === 'accent',
-          ['bg-gray-200 text-gray-900 focus:border-gray-300 focus-within:border-gray-300 hover:bg-gray-300']:
-            variant === 'neutral',
-          ['bg-transparent text-gray-900 border-gray-900 focus:border-gray-800 focus-within:border-gray-800 hover:border-gray-800']:
-            variant === 'outline',
-          ['p-1 text-xs md:p-1.5 md:text-sm']: size === 'small',
-          ['p-1.5 text-base md:p-2 md:text-lg']: size === 'medium',
-          ['p-2.5 text-lg md:p-3 md:text-xl']: size === 'large',
-        }
-      )}
-      {...rest}
-    >
-      <slot />
-    </button>
+<button
+  class={clsx(
+    'rounded-sm text-center border border-transparent disabled:cursor-not-allowed disabled:opacity-60',
+    {
+      ['bg-primary-900 text-gray-100 focus:border-primary-700 focus-within:border-primary-700 hover:bg-primary-800']:
+        variant === 'primary',
+      ['bg-secondary-600 text-gray-100 focus:border-secondary-500 focus-within:border-secondary-500 hover:bg-secondary-500']:
+        variant === 'secondary',
+      ['bg-accent-700 text-gray-100 focus:border-accent-500 focus-within:border-accent-500 hover:bg-accent-600']:
+        variant === 'accent',
+      ['bg-gray-200 text-gray-900 focus:border-gray-300 focus-within:border-gray-300 hover:bg-gray-300']:
+        variant === 'neutral',
+      ['bg-transparent text-gray-900 border-gray-900 focus:border-gray-800 focus-within:border-gray-800 hover:border-gray-800']:
+        variant === 'outline',
+      ['p-1 text-xs md:p-1.5 md:text-sm']: size === 'small',
+      ['p-1.5 text-base md:p-2 md:text-lg']: size === 'medium',
+      ['p-2.5 text-lg md:p-3 md:text-xl']: size === 'large',
+    },
+  )}
+  {...rest}
+>
+  <slot />
+</button>

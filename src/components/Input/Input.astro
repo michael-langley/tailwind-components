@@ -1,0 +1,14 @@
+---
+import FloatingInput from './FloatingInput.astro';
+import StackedInput from './StackedInput.astro';
+import type { InputProps } from './types';
+
+interface Props extends InputProps {
+  variant?: 'floating' | 'stacked';
+}
+
+const { variant = 'floating', ...rest } = Astro.props;
+---
+
+{variant === 'floating' && <FloatingInput {...rest} />}
+{variant === 'stacked' && <StackedInput {...rest} />}

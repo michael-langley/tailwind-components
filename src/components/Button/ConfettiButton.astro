@@ -1,26 +1,29 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import clsx from 'clsx';
 
-interface Props {
+interface Props extends HTMLAttributes<'button'> {
   variant?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'outline';
   size?: 'small' | 'medium' | 'large';
 }
 
-const {variant, size, ...rest} = Astro.props
+const { variant, size, ...rest } = Astro.props;
 ---
 
 <button
-	class={clsx("appearance-none py-2 px-4 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75")}
-	{...rest}
+  class={clsx(
+    'appearance-none py-2 px-4 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75',
+  )}
+  {...rest}
 >
-	<slot />
+  <slot />
 </button>
 
 <script>
-	import confetti from 'canvas-confetti';
-	const button = document.body.querySelector('button');
+  import confetti from 'canvas-confetti';
+  const button = document.body.querySelector('button');
 
-	if (button) {
-		button.addEventListener('click', () => confetti());
-	}
+  if (button) {
+    button.addEventListener('click', () => confetti());
+  }
 </script>

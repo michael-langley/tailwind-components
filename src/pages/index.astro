@@ -1,34 +1,35 @@
 ---
-	import "../styles/index.css"
+import '../styles/index.css';
 // Component Imports
 import Button from '../components/Button/Button.astro';
 import Counter from '../components/Counter/Counter.tsx';
-import Input from "../components/Input/Input.astro"
+import Input from '../components/Input/Input.astro';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro + TailwindCSS</title>
+  </head>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button id="btn">Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-						<Counter client:visible>
-				<h1>Hello, Solid!</h1>
-			</Counter>
-			<Input />
-		</div>
-	</body>
-	<script>
-		const btn = document.querySelector("#btn")
-		btn.addEventListener('click', () => {
-			console.log("we here fam")
-		})
-	</script>
+  <body>
+    <div class="grid place-items-center h-screen content-center">
+      <Button id="btn">Tailwind Button in Astro!</Button>
+      <a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+      <Counter client:visible>
+        <h1>Hello, Solid!</h1>
+      </Counter>
+      <Input variant='stacked' id="email-address" label="Email Address" type="email" value="ml@ml.com" />
+	  <Input id="email-address" label="Email Address" type="email" value="ml@ml.com" />
+    </div>
+  </body>
+  <script>
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+      console.log('we here fam');
+    });
+  </script>
 </html>

@@ -1,7 +1,19 @@
-                    <div>
+---
+import type { InputProps } from './types';
+type Props = InputProps;
 
-                        <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
+const { id, label, slotProps = { label: {} }, placeholder = '', ...rest } = Astro.props;
+---
 
-                        <input type="email" name="email" id="email" placeholder="you@company.com" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+<div>
+  <label for={id} class="block mb-1 text-sm text-gray-700" {...slotProps.label}
+    >{label}</label
+  >
 
-                    </div>
+  <input
+    id={id}
+    placeholder={placeholder || ''}
+    class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+    {...rest}
+  />
+</div>

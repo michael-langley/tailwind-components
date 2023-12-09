@@ -1,6 +1,22 @@
+---
+import type { InputProps } from './types';
+type Props = InputProps;
 
+const { id, label, slotProps = { label: {} }, placeholder = '', ...rest } = Astro.props;
+---
 
-<div class="relative mb-5 floating-input">
-              <input type="email" id="email" class="w-full h-16 p-3 border border-gray-200 rounded-md focus:outline-none focus:border-gray-500 focus:shadow-sm" placeholder="name@example.com" autocomplete="off" />
-              <label for="email" class="absolute top-0 left-0 h-full px-3 py-5 transition-all duration-100 ease-in-out origin-left transform pointer-events-none">Email address</label>
+<div class="relative floating-input">
+  <input
+    id={id}
+    class="w-full h-16 p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+    placeholder={placeholder || ''}
+    {...rest}
+  />
+  <label
+    for={id}
+    class="absolute top-0 left-0 h-full px-3 py-5 transition-all duration-100 ease-in-out origin-left transform pointer-events-none"
+    {...slotProps.label}
+  >
+    {label}
+  </label>
 </div>
