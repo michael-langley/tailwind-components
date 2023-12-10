@@ -1,0 +1,29 @@
+---
+import '../styles/index.css';
+// Component Imports
+import Counter from '../components/Solid/Counter/Counter.tsx';
+import Button from '../components/Solid/Button/Button.tsx';
+
+const handleClick = () => console.log('hello nojour')
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Solid + TailwindCSS</title>
+  </head>
+
+  <body>
+    <div class="grid place-items-center h-screen content-center">
+      <Counter client:visible>
+        <h1>Hello, Solid!</h1>
+      </Counter>
+      <Button client:visible id="btn-1" onClick={handleClick}>Click Me Im a Button</Button>
+    </div>
+  </body>
+
+
+</html>
